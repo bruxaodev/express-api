@@ -1,0 +1,29 @@
+{
+  "name": "base-api",
+  "module": "src/index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "dev:services": "bun services:up && bun --watch dev ",
+    "services:up": "docker compose -f ./infra/docker-compose.yml up -d",
+    "services:down": "docker compose -f ./infra/docker-compose.yml down"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bun": "latest",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.16.3",
+    "pino": "^9.7.0",
+    "pino-pretty": "^13.0.0"
+  }
+}
