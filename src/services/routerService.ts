@@ -57,7 +57,7 @@ export class RouterService {
         for (const file of allFiles) {
             try {
                 if (file === 'route.ts') {
-                    const routeModule = require(path.join(fullPath, file)).default as DynamicRoute;
+                    const routeModule = (require(path.join(fullPath, file)).default || require(path.join(fullPath, file))) as DynamicRoute;
 
                     if (typeof routeModule !== 'object' || routeModule === null) {
                         logger.error(`Error ${path.join(fullPath, file)}: invlid type`);

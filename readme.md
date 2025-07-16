@@ -215,6 +215,30 @@ export default route;
 
 These examples show the flexibility of the routing system.
 
+#### 5. Separate Named Exports for Middlewares and Methods
+
+With the recent update, you can now export middlewares and HTTP methods separately without using a default export. This allows for more modular route definitions.
+
+```typescript
+// route.ts
+import type { Request, Response } from 'express';
+import { isAuthenticated } from '@/middlewares/auth';
+
+export const middlewares = [isAuthenticated];
+
+export const GET = async (req: Request, res: Response) => {
+  try {
+    return res.status(200).json(req.user);
+  }
+  catch (err) {
+    req.logger.error(err);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+}
+```
+
+This approach enables exporting components individually, which the RouterService will compose into a DynamicRoute.
+
 ### Features
 
 - **Middlewares**: Add global or per-method middlewares in the route object.
