@@ -1,10 +1,10 @@
 import express from 'express';
 import { config, logger, dbConnect } from '@/config';
 import { RouterService } from '@/services/routerService'
-import { UserService } from './services/userService';
-import { JwtService } from './services/jwtService';
-import { handleUser } from './middlewares/auth';
-import { allowCors, cookieParser } from './middlewares';
+import { UserService } from '@/services/userService';
+import { JwtService } from '@/services/jwtService';
+import { handleUser } from '@/middlewares/auth';
+import { allowCors, cookieParser } from '@/middlewares';
 
 async function main() {
     await dbConnect();
